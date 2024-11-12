@@ -1,17 +1,20 @@
 import { ItemNavbar } from "@/ui/atoms";
 
-export default function Navbar():React.ReactNode{
+interface INavbarProps{
+    items?: string[],
+}
+export default function Navbar({
+    items,
+}: INavbarProps):React.ReactNode{
     return(
         <nav className="navbar">
             <ul className="navbar-list">
-                <ItemNavbar
-                    href="/login"
-                    text="Iniciar sessión"
-                />
-                <ItemNavbar
-                    href="/register"
-                    text="Registrarse"
-                />
+                {items?.map((item:string)=>(
+                    <ItemNavbar 
+                        text={item}
+                        href={`/${item}`}
+                    />
+                ))}
             </ul>
         </nav>
     )

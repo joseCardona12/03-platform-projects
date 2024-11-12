@@ -1,18 +1,18 @@
 import React from "react";
+import "./buttonStyles.scss";
 
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-    text?: string,
+interface IButtonProps{
+    children: React.ReactNode,
+    className:string
 }
-
-
 export default function Button({
-    text,
+    children,
+    className
 
-}: ButtonProps):React.ReactNode{
+}: IButtonProps):React.ReactNode{
     return(
-        <button>
-            {text}
+        <button className={`${className} button`}>
+            {children}
         </button>
     )
 }

@@ -1,0 +1,12 @@
+.button{
+    padding:  var(--padding-small) var(--padding-medium);
+    border-radius: var(--border-radius-extra-small);
+    border: none;
+    font-family: var(--font-main);
+    background-color: red;
+}
+
+.button-hero{
+    background-color: var(--background-color-black);
+    color: var(--color-white);
+}
