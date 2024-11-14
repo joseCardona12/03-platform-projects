@@ -3,10 +3,26 @@
     border-radius: var(--border-radius-extra-small);
     border: none;
     font-family: var(--font-main);
-    background-color: red;
+    cursor: pointer;
+    transition: border .2s ease-in-out;
+
+    &:hover{
+        border: 1px solid var(--color-black);
+    }
 }
 
-.button-hero{
+
+.button-hero-0,
+.button-login{
     background-color: var(--background-color-black);
     color: var(--color-white);
+    border: 1px solid var(--color-black);
+}
+.button-hero-1{
+    background-color: var(--background-color-white);
+    border: 1px solid var(--color-white);
+}
+
+.button-login{
+    width: 100%;
 }

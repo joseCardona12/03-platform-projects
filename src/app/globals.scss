@@ -3,11 +3,15 @@
 :root{
     --background-color-main: rgb(240, 238, 238);
     --background-color-black: #1d1d1d;
+    --background-color-white: #ffffff;
 
 
     /* Colors*/
     --color-black: #1d1d1d;
-    --color-white: #ececec;
+    --color-white-gray: #ececec;
+    --color-gray: #c4c4c4;
+    --color-white: #ffffff;
+    --color-red: #ff5b5b;
     
     /* Spaces*/
     --padding-extra-small:5px;
@@ -41,4 +45,5 @@ body{
     margin:0 auto;
     background-color: var(--background-color-main);
     font-family: var(--font-main);
+    padding: var(--padding-medium);
 }

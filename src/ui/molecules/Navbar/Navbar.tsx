@@ -1,4 +1,5 @@
 import { ItemNavbar } from "@/ui/atoms";
+import "./navbarStyles.scss";
 
 interface INavbarProps{
     items?: string[],
@@ -9,10 +10,11 @@ export default function Navbar({
     return(
         <nav className="navbar">
             <ul className="navbar-list">
-                {items?.map((item:string)=>(
+                {items?.map((item:string, index:number)=>(
                     <ItemNavbar 
                         text={item}
                         href={`/${item}`}
+                        key={index}
                     />
                 ))}
             </ul>

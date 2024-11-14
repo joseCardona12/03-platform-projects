@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: var(--padding-small);
     height: 100%;
 
     .hero-description{

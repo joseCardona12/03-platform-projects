@@ -1,0 +1,39 @@
+div.content-form{
+    background-color: var(--background-color-white);
+    border-radius: var(--border-radius-extra-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+    padding: var(--padding-small);
+
+    form.form{
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-small);
+        
+        div.form-title{
+            text-align: center;
+
+            p{
+                font-size: .9rem;
+            }
+        }
+
+        div.form-separator{
+            text-align: center;
+
+            .separator-password,
+            p > .separator-register{
+                text-decoration: none;
+            }
+
+            p,
+            .separator-password{
+                font-size: .9rem;
+            }
+
+        }
+    }
+}

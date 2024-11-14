@@ -11,7 +11,7 @@ export default function Button({
 
 }: IButtonProps):React.ReactNode{
     return(
-        <button className={`${className} button`}>
+        <button className={`button ${className}`}>
             {children}
         </button>
     )

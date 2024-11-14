@@ -1,3 +1,4 @@
+import "./identifyStyles.scss";
 import Link from "next/link";
 
 interface IIdentifyProps {
@@ -19,8 +20,8 @@ export default function Identify({
           alt={`logo-${url_image}`}
         />
       ) : (
-        <Link href={link_logo}>
-          <h2 className="identify-logo">{text}</h2>
+        <Link href={link_logo} className="identify-logo">
+          <h2 className="logo">{text}</h2>
         </Link>
       )}
     </div>

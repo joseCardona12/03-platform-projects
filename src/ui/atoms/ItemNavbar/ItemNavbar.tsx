@@ -1,4 +1,5 @@
-import Link from "next/link"
+import Link from "next/link";
+import "./itemNavbarStyles.scss";
 
 
 interface IItemNavbarProps {
@@ -11,7 +12,7 @@ export default function ItemNavbar({
 }:IItemNavbarProps):React.ReactNode{
     return(
         <li className="list-item">
-            <Link href={href}>{text}</Link>
+            <Link className="item-link" href={href}>{text}</Link>
         </li>
     )
 }

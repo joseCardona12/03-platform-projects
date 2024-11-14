@@ -18,8 +18,8 @@ export default function Hero({
             <h1 className="hero-title">{title}</h1>
             <p className="hero-description">{description}</p>
             <div className="hero-buttons">
-                {buttonNames.map((nameButton:string)=>(
-                    <Button className="button-hero">
+                {buttonNames.map((nameButton:string, index:number)=>(
+                    <Button className={`button-hero-${index}`}>
                         {nameButton}
                     </Button>
                 ))}
