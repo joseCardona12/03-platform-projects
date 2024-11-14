@@ -5,7 +5,7 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>{
     type?:string
     error?:string,
     name?:string,
-    width?:string
+    width?:string,
 }
 
 export default function Input({

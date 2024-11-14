@@ -14,4 +14,9 @@ export default class ProjectService implements PProject{
         }
         return await this.clientHttp.get<IProjectResponse>(`projects?page=${pagination.page}&size=${pagination.size}`);
     }
+
+    async deleteProject(id: number | string): Promise<{ message: string; statusCode: number; } | void> {
+        console.log("id", id);
+        return await this.clientHttp.destroy<IProjectResponse>(`projects/${id}`);
+    }
 }

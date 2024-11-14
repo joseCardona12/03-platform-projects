@@ -4,6 +4,7 @@ import "./tableStyles.scss";
 import { Pagination } from "@/ui/molecules";
 import "./tableStyles.scss";
 import { IProject } from "@/app/core/application/dto/projects";
+import { ProjectService } from "@/app/infrastructure/services";
 
 interface ITableProps{
     columns: string[],
@@ -14,6 +15,12 @@ export default function Table({
     columns,
     rows,
 }:ITableProps):React.ReactNode{
+
+    const handleDelete = async(id: number): Promise<void> => {
+        const ServiceProject = new ProjectService();
+        const data = await ServiceProject.deleteProject(id);
+        console.log("hello",data);
+    }
 
     return(
         <table className="table">
@@ -49,7 +56,7 @@ export default function Table({
                         <td>{row.organizer.name}</td>
                         <td>
                             <Button className="button-table-edit">Editar</Button>
-                            <Button className="button-table-delete">Eliminar</Button>
+                            <Button onClick={()=>handleDelete(row.id)} className="button-table-delete">Eliminar</Button>
                         </td>
                     </tr>
                 ))}

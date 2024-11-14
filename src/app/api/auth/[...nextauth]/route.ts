@@ -3,6 +3,7 @@ import { PAuth } from "@/app/core/application/ports";
 import AuthService from "@/app/infrastructure/services/authService";
 import NextAuth, {NextAuthOptions, Session, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { cookies } from "next/headers";
 
 interface AuthToken{
     id?:string,
@@ -58,6 +59,9 @@ export const authOptions: NextAuthOptions = {
                 try{
                     const authService:PAuth = new AuthService();
                     const user = await authService.login(data);
+                    
+                    const storeCookies = cookies();
+                    storeCookies.set("access_token", user.data.access_token);
     
                     return {
                         email: data.email,

@@ -6,4 +6,5 @@ export interface PProject{
      * @returns Promise<IProjectResponse>
      */
     getProjects(pagination: IProjectRequest): Promise<IProjectResponse>;
+    deleteProject(id:number | string):Promise<{message:string,statusCode:number} | void>;
 }
