@@ -6,20 +6,26 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button } from "@/ui/atoms";
+import { Button, inputAlert } from "@/ui/atoms";
 import Link from "next/link";
 import "./formLoginStyles.scss";
+import { signIn } from "next-auth/react";
+import { Util } from "@/app/core/application/utils";
+import { useRouter } from "next/navigation";
 
 const loginSchema = yup.object().shape({
   email: yup.string().email("Email is Incorrect").required("Email is Required"),
   password: yup
     .string()
     .required("Password is Required")
-    .max(8, "Password must be less than 8 characters")
-    .min(6, "Password must be more than 6 characters"),
+    .max(12, "Password must be less than 12 characters")
+    .min(3, "Password must be more than 3 characters"),
 });
 
 export default function FormLogin(): React.ReactNode {
+
+  const router = useRouter();
+
   const {
     control,
     handleSubmit,
@@ -31,8 +37,31 @@ export default function FormLogin(): React.ReactNode {
     resolver: yupResolver(loginSchema),
   });
 
-  const handleLogin = (data: ILoginRequest): void => {
-    console.log(data);
+
+  const handleLogin = async({ email, password }: ILoginRequest): Promise<void> => {
+    console.log(email, password);
+    const response = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
+    
+    if(!response?.ok){
+      setError("email", {
+        type: "manual",
+        message: "Credenciales incorrectas",
+      });
+      setError("password", {
+        type: "manual",
+        message: "Credenciales incorrectas",
+      });
+      inputAlert("Credenciales incorrectas", "error");
+      return;
+    }
+    const getNameSeparate = Util.separateName(email);
+    inputAlert(`Bienvenido ${getNameSeparate}`, "success");
+    router.push("/dashboard");
+
   };
   return (
     <div className="content-form">
@@ -61,8 +90,8 @@ export default function FormLogin(): React.ReactNode {
         />
         <Button className="button-login">Iniciar sesión</Button>
         <div className="form-separator">
-            <Link className="separator-password" href="/auth/forgot-password">¿Olvidaste tu contraseña</Link>
-            <p>¿No tienes una cuenta? <Link className="separator-register" href="/auth/register">Registrate aquí</Link></p>
+            <Link className="separator-password" href="/forgot-password">¿Olvidaste tu contraseña</Link>
+            <p>¿No tienes una cuenta? <Link className="separator-register" href="/register">Registrate aquí</Link></p>
         </div>
       </form>
     </div>

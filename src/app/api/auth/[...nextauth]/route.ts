@@ -7,6 +7,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 interface AuthToken{
     id?:string,
     token?:string,
+    role?:string,
 }
 
 interface AuthUser extends User {
@@ -25,6 +26,7 @@ interface CustomSession extends Session {
         name?:string | null,
         email:string | null,
         image?:string | null,
+        role?:string | null;
     }
 }
 
@@ -45,7 +47,8 @@ export const authOptions: NextAuthOptions = {
                 }
             },
             authorize: async (credentials)=>{
-                if (!credentials)return null;
+                console.log(credentials)
+                if (!credentials?.email || !credentials.password)return null;
                 
                 const data: ILoginRequest = {
                     email: credentials.email,
@@ -53,14 +56,9 @@ export const authOptions: NextAuthOptions = {
                 };
 
                 try{
-                    
                     const authService:PAuth = new AuthService();
                     const user = await authService.login(data);
-
-                    if(!user){
-                        console.log({message: "Error to login"});
-                        return;
-                    }
+    
                     return {
                         email: data.email,
                         id: (user.data.user.sub).toString(),
@@ -68,15 +66,10 @@ export const authOptions: NextAuthOptions = {
                         token: user.data.access_token,
                         photo: user.data.user.photo,
                         role: user.data.user.role
-                    } as AuthUser
-
+                    } as AuthUser;
+                    
                 }catch(error:unknown){
-                    console.log(error);
-                    return {
-                        id: 213,
-                        message: "",
-                        token:""
-                    }  
+                    return Promise.reject("Error to login" + error);
                 }
             }
         })
@@ -91,6 +84,7 @@ export const authOptions: NextAuthOptions = {
                 const authUser = user as AuthUser;
                 token.id = authUser.id;
                 token.token = authUser.token;
+                token.role = authUser.role;
             }
             return token;
         },
@@ -99,11 +93,11 @@ export const authOptions: NextAuthOptions = {
             const authToken = token as AuthToken;
             customSession.user.id = authToken.id;
             customSession.user.token = authToken.token;
+            customSession.user.role = authToken.role;
             return session;
         }
     }
 }
 
-export default NextAuth(authOptions);
 export const GET = NextAuth(authOptions);
 export const POST = NextAuth(authOptions);

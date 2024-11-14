@@ -1,0 +1,15 @@
+div.content-avatar{
+    display: flex;
+    align-items: center;
+    gap: var(--padding-small);
+
+    div.avatar-image{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: var(--background-color-main);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,14 @@
+header.header-dashboard{
+    grid-area: header;
+    background-color: var(--background-color-white);
+    border-radius: var(--border-radius-extra-small);
+    padding: var(--padding-small);
+    display: flex;
+    justify-content: space-between;
+
+    div.dashboard-right{
+        display: flex;
+        align-items: center;
+        gap: var(--padding-medium);
+    }
+}

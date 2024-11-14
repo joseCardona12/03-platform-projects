@@ -21,7 +21,8 @@ export default class ClientHttpUtil {
 
     async post<Req,Res>(url:string, data:Req, type?:string):Promise<Res>{
         const headers: {[key:string]:string} = await this.getHeaders();
-        const response = await fetch(`${this.path}${url}`, {
+        console.log(url, this.path)
+        const response = await fetch(`${this.path}/${url}`, {
             headers,
             method: "POST",
             body: JSON.stringify(data)
