@@ -26,3 +26,32 @@
 .button-login{
     width: 100%;
 }
+
+.button-add, .button-download{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--padding-small);
+    background-color: var(--background-color-black);
+    color: var(--background-color-white);
+
+    &:hover{
+        border: none;
+        background-color: var(--background-color-black-hover);
+    }
+}
+
+.button-table-delete{
+    background-color: var(--background-color-red);
+    color: var(--color-white);
+    &:hover{
+        border: none;
+        background-color: var(--background-color-red-hover);
+    }
+}
+
+.button-table-edit {
+    background-color:var(--background-color-white);
+    border: 1px solid var(--color-white-gray);
+
+}

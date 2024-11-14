@@ -5,12 +5,14 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>{
     type?:string
     error?:string,
     name?:string,
+    width?:string
 }
 
 export default function Input({
     placeholder,
     type,
     error,
+    width,
     ...props
 }:IInputProps):React.ReactNode{
     return(
@@ -18,7 +20,8 @@ export default function Input({
             <input
                 placeholder={placeholder}
                 type={type}
-                {...props}    
+                {...props}   
+                style={{width: width}} 
             />
             {error && <p className="input-error">{error}</p>}
         </div>

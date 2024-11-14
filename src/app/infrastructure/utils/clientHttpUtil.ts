@@ -18,6 +18,14 @@ export default class ClientHttpUtil {
         return await response.json();
     }
 
+    async get<Res>(url:string):Promise<Res>{
+        const headers: {[key:string]:string} = await this.getHeaders();
+        const response = await fetch(`${this.path}/${url}`, {
+            headers
+        });
+        return await this.manageError(response);
+    }
+
 
     async post<Req,Res>(url:string, data:Req, type?:string):Promise<Res>{
         const headers: {[key:string]:string} = await this.getHeaders();

@@ -1,5 +1,7 @@
 "use client";
+import { IconAddCircle, IconDocument } from "@/assets/icons";
 import { Button } from "@/ui/atoms";
+import "./buttonDownloadStyles.scss";
 
 
 export default function ButtonsDownload():React.ReactNode{
@@ -12,9 +14,11 @@ export default function ButtonsDownload():React.ReactNode{
     return (
         <div className="content-buttons-download">
             <Button className="button-download" onClick={handleDownload}>
-                Descargar Reporte
+              <IconDocument />
+              Descargar Reporte
             </Button>
-            <Button className="button-download-alt" onClick={handleCreate}>
+            <Button className="button-add" onClick={handleCreate}>
+                <IconAddCircle />
                 Nuevo Proyecto
             </Button>
         </div>

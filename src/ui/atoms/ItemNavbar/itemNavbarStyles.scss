@@ -9,3 +9,13 @@
         color: var(--color-black);
     }
 }
+
+.list-dashboard {
+    border: none;
+    display: flex;
+    gap: var(--padding-small);
+
+    &:hover{
+        background-color: var(--background-color-main);
+    }
+}

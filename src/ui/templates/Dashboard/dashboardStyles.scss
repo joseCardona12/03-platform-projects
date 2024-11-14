@@ -1,5 +1,6 @@
 main.content-dashboard{
     grid-area: main;
-    background-color: var(--background-color-white);
-
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-medium);
 }

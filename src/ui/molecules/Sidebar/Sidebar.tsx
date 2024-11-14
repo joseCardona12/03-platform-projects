@@ -14,11 +14,13 @@ export default function Sidebar():React.ReactNode{
                     href="/Proyectos" 
                     text="Dashboard" 
                     icon={<IconFolder />}
+                    className="list-dashboard"
                 />
                 <ItemNavbar 
                     href="/Cerrar sesiòn" 
                     text="Dashboard" 
                     icon={<IconLogOut />}
+                    className="list-dashboard"
                 />
             </ul>
         </div>

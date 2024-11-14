@@ -1,0 +1,19 @@
+div.card{
+    border: 1px solid var(--color-gray);
+    border-radius: var(--border-radius-extra-small);
+    padding: var(--padding-small);
+    width: calc((100% / 4) - var(--padding-small));
+    background-color: var(--background-color-white);
+    color: var(--color-gray-dark);
+
+    div.card-header{
+        display: flex;
+        justify-content: space-between;
+        gap: var(--padding-small);
+    }
+
+    div.card-body > p{
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+}
